@@ -1,0 +1,7 @@
+
+config BR2_PACKAGE_LDD
+	bool "ldd"
+	help
+	  Includes the misc-modules and scull kernel modules in the kernel image.
+	  These are Linux Device Driver components including example drivers and character devices.
+

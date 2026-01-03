@@ -1,0 +1,29 @@
+#!/bin/sh
+
+case "$1" in
+    start)
+        echo "Loading scull driver..."
+        cd /opt/aesd-modules && ./scull_load
+
+        echo "Loading faulty driver..."
+        modprobe faulty
+
+        echo "Loading hello module..."
+        modprobe hello
+        ;;
+    stop)
+        echo "Unloading hello module..."
+        rmmod hello
+
+        echo "Unloading faulty driver..."
+        rmmod faulty
+
+        echo "Unloading scull driver..."
+        cd /opt/aesd-modules && ./scull_unload
+        ;;
+    *)
+        echo "Usage: $0 {start|stop}"
+        exit 1
+esac
+
+exit 0
